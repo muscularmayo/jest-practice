@@ -11,3 +11,4 @@ test('it reverses odd length strings', () => {
   expect(reverseString('Abcdefg')).toBe('gfedcbA')
   expect(reverseString('ABC')).toBe('CBA')
 })
+

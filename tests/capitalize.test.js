@@ -9,3 +9,4 @@ test('only the first letter is capitalized', () => {
   expect(capitalize('CAPS')).toBe('Caps');
   expect(capitalize('CaPs')).toBe('Caps');
 })
+
