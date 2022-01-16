@@ -1,22 +1,40 @@
 
 const caesarcipher = function(str, shiftAmt) {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz'
+  const upperAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   let result = ''
 
   for(let i = 0; i< str.length; i++) {
     let currentLetter = str[i]
-    if(currentLetter === ' ') {
+    let uppercaseFlag = false
+    if(alphabet.indexOf(currentLetter) === -1 && upperAlphabet.indexOf(currentLetter) === -1) {
       result += currentLetter
     } else {
-      let currentPosition = alphabet.indexOf(currentLetter)
-      let shiftedPosition = currentPosition + shiftAmt;
-      if (shiftedPosition > 25) {
-        shiftedPosition -= 26;
-      } else if (shiftedPosition < 0) {
-        shiftedPosition += 26;
+      if (currentLetter.toUpperCase() === currentLetter) {
+        uppercaseFlag = true;
       }
-      let shiftedLetter = alphabet[shiftedPosition]
-      result += shiftedLetter
+      if (uppercaseFlag) {
+        let currentPosition = upperAlphabet.indexOf(currentLetter)
+        let shiftedPosition = currentPosition + shiftAmt;
+        if (shiftedPosition > 25) {
+          shiftedPosition = shiftedPosition % 26;
+        } else if (shiftedPosition < 0) {
+          shiftedPosition += 26;
+        }
+        let shiftedLetter = upperAlphabet[shiftedPosition]
+        result += shiftedLetter
+      } else {
+        let currentPosition = alphabet.indexOf(currentLetter)
+        let shiftedPosition = currentPosition + shiftAmt;
+        if (shiftedPosition > 25) {
+          shiftedPosition = shiftedPosition % 26;
+        } else if (shiftedPosition < 0) {
+          shiftedPosition += 26;
+        }
+        let shiftedLetter = alphabet[shiftedPosition]
+        result += shiftedLetter
+      }
+
     }
 
   }
