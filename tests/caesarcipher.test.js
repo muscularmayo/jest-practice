@@ -10,3 +10,8 @@ test('it maintains the same upper or lower case', () => {
   expect(caesarcipher('AbCdEfGhIjKlMnOpQrStUvWxYz', 1)).toBe('BcDeFgHiJkLmNoPqRsTuVwXyZa')
 
 })
+
+test('it doesn\'t shift punctuation at all', () => {
+  expect(caesarcipher(',./:',1)).toBe(',./:')
+  expect(caesarcipher('please, for the love of god, fuck off', 3)).toBe('sohdvh, iru wkh oryh ri jrg, ixfn rii')
+})
